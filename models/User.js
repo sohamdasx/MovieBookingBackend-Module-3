@@ -14,6 +14,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         enum: ['user', 'admin'],
         default: 'user'
+    },
+    joiningDate: {
+        type: Date,
+        required: true,
+        default: Date.now
     }
 });
 
