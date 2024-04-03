@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const User = require('../models/User');
 
 exports.authenticate = async (username, password) => {
@@ -5,7 +6,8 @@ exports.authenticate = async (username, password) => {
     if (!user) {
         return null;
     }
-    if (user.password !== password) {
+    const validPassword = await bcrypt.compare(password, user.password);
+    if (!validPassword) {
         return null;
     }
     return user;
