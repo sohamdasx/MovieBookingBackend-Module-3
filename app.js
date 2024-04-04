@@ -17,7 +17,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/movies', movieRoutes);
 
 // Database connection
-mongoose.connect(process.env.DATABASE_URL)
+mongoose.connect('mongodb+srv://sohamdas2702:' + process.env.MONGO_ATLAS_PW + '@moviebookingapp.ytn0v41.mongodb.net/')
 const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('Connected to Database'))
